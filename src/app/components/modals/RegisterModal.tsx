@@ -8,7 +8,7 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import useRegisterModal from '@/app/hooks/useRegisterModal';
 import Modal from './Modal';
 import Heading from '../Heading';
-import Input from '../Input';
+import Input from '../inputs/Input';
 import { toast } from 'react-hot-toast';
 import Button from '../Button';
 import { signIn } from 'next-auth/react';
@@ -58,7 +58,7 @@ function RegisterModal() {
       <Input
         id="email"
         label="Email"
-        disable={isLoading}
+        disabled={isLoading}
         register={register}
         errors={errors}
         required
@@ -66,7 +66,7 @@ function RegisterModal() {
       <Input
         id="name"
         label="Name"
-        disable={isLoading}
+        disabled={isLoading}
         register={register}
         errors={errors}
         required
@@ -75,7 +75,7 @@ function RegisterModal() {
         id="password"
         type="password"
         label="Password"
-        disable={isLoading}
+        disabled={isLoading}
         register={register}
         errors={errors}
         required

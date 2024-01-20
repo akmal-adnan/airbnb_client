@@ -8,11 +8,12 @@ import useRegisterModal from '@/app/hooks/useRegisterModal';
 import useLoginModal from '@/app/hooks/useLoginModal';
 import Modal from './Modal';
 import Heading from '../Heading';
-import Input from '../Input';
+
 import { toast } from 'react-hot-toast';
 import Button from '../Button';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import Input from '../inputs/Input';
 
 function LoginModal() {
   const router = useRouter();
@@ -63,7 +64,7 @@ function LoginModal() {
       <Input
         id="email"
         label="Email"
-        disable={isLoading}
+        disabled={isLoading}
         register={register}
         errors={errors}
         required
@@ -72,7 +73,7 @@ function LoginModal() {
         id="password"
         type="password"
         label="Password"
-        disable={isLoading}
+        disabled={isLoading}
         register={register}
         errors={errors}
         required
