@@ -10,6 +10,7 @@ import { SafeListing, SafeReservation, SafeUser } from '@/app/types';
 
 import HeartButton from '../HeartButton';
 import Button from '../Button';
+import ClientOnly from '../ClientOnly';
 
 interface ListingCardProps {
   data: SafeListing;
@@ -45,7 +46,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
 
       onAction?.(actionId);
     },
-    [actionId, disabled, onAction]
+    [disabled, onAction, actionId]
   );
 
   const price = useMemo(() => {
@@ -84,8 +85,6 @@ const ListingCard: React.FC<ListingCardProps> = ({
         >
           <Image
             fill
-            alt="Listing"
-            src={data.imageSrc}
             className="
               object-cover 
               h-full 
@@ -93,25 +92,29 @@ const ListingCard: React.FC<ListingCardProps> = ({
               group-hover:scale-110 
               transition
             "
+            src={data.imageSrc}
+            alt="Listing"
           />
-          <div className="absolute top-3 right-3">
+          <div
+            className="
+            absolute
+            top-3
+            right-3
+          "
+          >
             <HeartButton listingId={data.id} currentUser={currentUser} />
           </div>
         </div>
-
         <div className="font-semibold text-lg">
           {location?.region}, {location?.label}
         </div>
-
         <div className="font-light text-neutral-500">
           {reservationDate || data.category}
         </div>
-
         <div className="flex flex-row items-center gap-1">
           <div className="font-semibold">$ {price}</div>
           {!reservation && <div className="font-light">night</div>}
         </div>
-
         {onAction && actionLabel && (
           <Button
             disabled={disabled}

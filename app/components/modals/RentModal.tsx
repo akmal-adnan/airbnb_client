@@ -67,15 +67,14 @@ const RentModal = () => {
       dynamic(() => import('../Map'), {
         ssr: false,
       }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [location]
   );
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
-      shouldValidate: true,
       shouldDirty: true,
       shouldTouch: true,
+      shouldValidate: true,
     });
   };
 
